@@ -1,0 +1,92 @@
+{
+  "stations": [
+    {
+      "id": "BER-CH-01",
+      "name": "Berlin Central Hub",
+      "address": "Friedrichstraße 89, Berlin",
+      "available": 4,
+      "charging": 6,
+      "offline": 0,
+      "total": 10,
+      "utilization": 82,
+      "status": "Operational"
+    },
+    {
+      "id": "BER-AP-02",
+      "name": "Alexanderplatz",
+      "address": "Alexanderplatz 2, Berlin",
+      "available": 1,
+      "charging": 5,
+      "offline": 1,
+      "total": 7,
+      "utilization": 71,
+      "status": "Attention"
+    },
+    {
+      "id": "BER-CB-03",
+      "name": "Charlottenburg",
+      "address": "Kantstraße 17, Berlin",
+      "available": 5,
+      "charging": 4,
+      "offline": 0,
+      "total": 9,
+      "utilization": 33,
+      "status": "Operational"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "session-1786686907345",
+      "vehicle": "BMW i4",
+      "plate": "B-EL 4821",
+      "station": "Charlottenburg · Port 04",
+      "startedAt": "Just now",
+      "energy": 0,
+      "duration": "0m",
+      "status": "Charging"
+    },
+    {
+      "id": "session-1786686893069",
+      "vehicle": "Volkswagen ID.4",
+      "plate": "B-RV 1172",
+      "station": "Alexanderplatz · Port 05",
+      "startedAt": "Just now",
+      "energy": 0,
+      "duration": "0m",
+      "status": "Charging"
+    },
+    {
+      "id": "ses_1048",
+      "vehicle": "Tesla Model 3",
+      "plate": "B-TM 2901",
+      "station": "Berlin Central Hub · Port 04",
+      "stationId": "BER-CH-01",
+      "startedAt": "Today, 09:42",
+      "energy": 42.8,
+      "duration": "1h 18m",
+      "status": "Charging"
+    },
+    {
+      "id": "ses_1047",
+      "vehicle": "BMW i4",
+      "plate": "B-EL 4821",
+      "station": "Alexanderplatz · Port 02",
+      "stationId": "BER-AP-02",
+      "startedAt": "Today, 09:18",
+      "energy": 31.5,
+      "duration": "1h 42m",
+      "status": "Charging"
+    },
+    {
+      "id": "ses_1046",
+      "vehicle": "Volkswagen ID.4",
+      "plate": "B-RV 1172",
+      "station": "Charlottenburg · Port 07",
+      "stationId": "BER-CB-03",
+      "startedAt": "Today, 08:36",
+      "energy": 54.2,
+      "duration": "2h 06m",
+      "status": "Complete"
+    }
+  ]
+}
