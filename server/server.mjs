@@ -81,6 +81,38 @@ const server = createServer(async (request, response) => {
 
       return sendJson(response, 201, session)
     }
+    // End a charging session.
+if (request.method === 'POST' && url.pathname === '/api/sessions/end') {
+  const body = await getRequestBody(request)
+  const database = await getDatabase()
+
+  const session = database.sessions.find(
+    (item) => item.id === body.sessionId
+  )
+
+  if (!session) {
+    return sendJson(response, 404, { error: 'Session not found.' })
+  }
+
+  if (session.status === 'Complete') {
+    return sendJson(response, 400, { error: 'Session already completed.' })
+  }
+
+  session.status = 'Complete'
+
+  const station = database.stations.find((item) =>
+    session.station.includes(item.name)
+  )
+
+  if (station) {
+    station.charging -= 1
+    station.available += 1
+  }
+
+  await saveDatabase(database)
+
+  return sendJson(response, 200, session)
+}
 
     return sendJson(response, 404, { error: 'Page not found.' })
   } catch (error) {

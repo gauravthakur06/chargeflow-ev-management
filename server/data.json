@@ -4,8 +4,8 @@
       "id": "BER-CH-01",
       "name": "Berlin Central Hub",
       "address": "Friedrichstraße 89, Berlin",
-      "available": 4,
-      "charging": 6,
+      "available": 5,
+      "charging": 5,
       "offline": 0,
       "total": 10,
       "utilization": 82,
@@ -15,8 +15,8 @@
       "id": "BER-AP-02",
       "name": "Alexanderplatz",
       "address": "Alexanderplatz 2, Berlin",
-      "available": 1,
-      "charging": 5,
+      "available": 2,
+      "charging": 4,
       "offline": 1,
       "total": 7,
       "utilization": 71,
@@ -64,7 +64,7 @@
       "startedAt": "Today, 09:42",
       "energy": 42.8,
       "duration": "1h 18m",
-      "status": "Charging"
+      "status": "Complete"
     },
     {
       "id": "ses_1047",
@@ -75,7 +75,7 @@
       "startedAt": "Today, 09:18",
       "energy": 31.5,
       "duration": "1h 42m",
-      "status": "Charging"
+      "status": "Complete"
     },
     {
       "id": "ses_1046",
