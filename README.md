@@ -6,11 +6,10 @@ The application uses fictional demonstration data for charging stations in Berli
 
 ## Application Preview
 
-<!-- Add screenshots of your actual application in the screenshots folder. -->
-
 ### Dashboard
 
-![ChargeFlow Dashboard](screenshots/dashboard.png)
+![ChargeFlow Dashboard](<img width="1791" height="486" alt="Screenshot 2026-10-09 231821" src="https://github.com/user-attachments/assets/afbe3c60-35e2-4a3a-a9fb-e60092f646d6" />
+)
 
 ### Charging Stations
 
