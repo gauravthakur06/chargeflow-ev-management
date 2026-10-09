@@ -8,8 +8,8 @@ The application uses fictional demonstration data for charging stations in Berli
 
 ### Dashboard
 
-![ChargeFlow Dashboard](<img width="1791" height="486" alt="Screenshot 2026-10-09 231821" src="https://github.com/user-attachments/assets/afbe3c60-35e2-4a3a-a9fb-e60092f646d6" />
-)
+![ChargeFlow Dashboard] <img width="1791" height="486" alt="Screenshot 2026-10-09 231821" src="https://github.com/user-attachments/assets/35e27ab4-3223-44a8-9358-35abfcd35e08" />
+
 
 ### Charging Stations
 
