@@ -1,9 +1,23 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 const vehicles = [
   'BMW i4 · B-EL 4821',
   'Tesla Model 3 · B-TM 2901',
   'Volkswagen ID.4 · B-RV 1172',
+  'Mercedes EQE · B-ME 4501',
+  'Audi Q8 e-tron · B-AU 8235',
+  'Hyundai Ioniq 5 · B-HY 7108',
+  'Kia EV6 · B-KV 6192',
+  'Porsche Taycan · B-PT 9904',
+  'BMW iX · B-IX 4509',
+  'Tesla Model Y · B-TY 1127',
+  'Volkswagen ID. Buzz · B-VW 5673',
+  'Nissan Leaf · B-NL 2281',
+  'Renault Megane E-Tech · B-RM 7840',
+  'Skoda Enyaq · B-SE 3325',
+  'Volvo EX30 · B-VE 9436',
+  'Ford Mustang Mach-E · B-FM 2508',
+  'BYD Seal · B-BY 5531'
 ]
 
 export default function App() {
@@ -12,10 +26,36 @@ export default function App() {
   const [loading, setLoading] = useState(true)
   const [message, setMessage] = useState('')
   const [showForm, setShowForm] = useState(false)
-
+  const pageRef = useRef(null)
+  const [search, setSearch] = useState('')
+const [filter, setFilter] = useState('All')
+const [currentTime, setCurrentTime] = useState(new Date())
   useEffect(() => {
-    loadData()
-  }, [])
+  loadData()
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show')
+      }
+    })
+  },
+  {
+    threshold: 0.15,
+  }
+)
+
+document.querySelectorAll('.reveal').forEach((el) => {
+  observer.observe(el)
+})
+
+return () => observer.disconnect()
+  const timer = setInterval(() => {
+    setCurrentTime(new Date())
+  }, 1000)
+
+  return () => clearInterval(timer)
+}, [])
 
   async function loadData() {
     try {
@@ -97,25 +137,50 @@ export default function App() {
   const deliveredEnergy = sessions.reduce(
     (total, session) => total + session.energy,
     0
-  )
+  ) 
+  const filteredSessions = sessions.filter((session) => {
+  const text = search.toLowerCase()
+
+  const matchesSearch =
+    session.vehicle.toLowerCase().includes(text) ||
+    session.station.toLowerCase().includes(text) ||
+    session.plate.toLowerCase().includes(text)
+
+  const matchesFilter =
+    filter === 'All' || session.status === filter
+
+  return matchesSearch && matchesFilter
+})
     return (
     <div className="page">
       <header>
-        <div>
-          <p className="small-title">EV CHARGING OPERATIONS</p>
-          <h1>ChargeFlow</h1>
-          <p className="subtitle">
-            A simple website for managing charging stations and sessions.
-          </p>
-        </div>
 
-        <button
-          className="primary-button"
-          onClick={() => setShowForm(true)}
-        >
-          + Start charging session
-        </button>
-      </header>
+  <div>
+    <p className="small-title">EV CHARGING OPERATIONS</p>
+
+    <h1>ChargeFlow</h1>
+
+    <p className="subtitle">
+      A simple website for managing charging stations and sessions.
+    </p>
+  </div>
+
+  <div className="header-actions">
+
+    <div className="clock-box">
+      🕒 {currentTime.toLocaleTimeString()}
+    </div>
+
+    <button
+      className="primary-button"
+      onClick={() => setShowForm(true)}
+    >
+      + Start charging session
+    </button>
+
+  </div>
+
+</header>
 
       {message && (
         <div className="message">
@@ -124,7 +189,7 @@ export default function App() {
         </div>
       )}
 
-      <section className="summary">
+      <section className="summary reveal">
         <InfoCard
           title="Charging now"
           value={chargingPorts}
@@ -150,7 +215,7 @@ export default function App() {
         />
       </section>
 
-      <section>
+      <section className="stations-section reveal">
         <div className="section-title">
           <div>
             <h2>Charging stations</h2>
@@ -171,68 +236,73 @@ export default function App() {
         )}
       </section>
 
-      <section className="sessions-section">
-        <div className="section-title">
-          <div>
-            <h2>Charging sessions</h2>
-            <p>Latest activity in the network</p>
-          </div>
-        </div>
+      <section className="sessions-section reveal">
+  <div className="section-title">
 
-        <div className="table-box">
-          <table>
-            <thead>
-              <tr>
-                <th>Vehicle</th>
-                <th>Station</th>
-                <th>Started</th>
-                <th>Energy</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
+    <div>
+      <h2>Charging sessions</h2>
+      <p>Latest activity in the network</p>
+    </div>
 
-            <tbody>
-              {sessions.map((session) => (
-                <tr key={session.id}>
-                  <td>
-                    <b>{session.vehicle}</b>
-                    <br />
-                    <small>{session.plate}</small>
-                  </td>
+    <div className="session-toolbar">
+      <input
+        className="search-box"
+        type="text"
+        placeholder="Search vehicle, station or plate..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
-                  <td>{session.station}</td>
+      <select
+        className="filter-select"
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
+      >
+        <option>All</option>
+        <option>Charging</option>
+        <option>Complete</option>
+      </select>
+    </div>
 
-                  <td>{session.startedAt}</td>
+  </div>
 
-                  <td>{session.energy.toFixed(1)} kWh</td>
+  <div className="table-box">
+    <table>
+      <thead>
+        <tr>
+          <th>Vehicle</th>
+          <th>Station</th>
+          <th>Started</th>
+          <th>Energy</th>
+          <th>Status</th>
+        </tr>
+      </thead>
 
-                  <td>
-                    <span
-                      className={`status ${session.status.toLowerCase()}`}
-                    >
-                      {session.status}
-                    </span>
-                  </td>
+      <tbody>
+        {filteredSessions.map((session) => (
+          <tr key={session.id}>
+            <td>
+              <b>{session.vehicle}</b>
+              <small>{session.plate}</small>
+            </td>
 
-                  <td>
-                    {session.status === 'Charging' ? (
-                      <button
-                        className="primary-button"
-                        onClick={() => endSession(session.id)}
-                      >
-                        End Session
-                      </button>
-                    ) : (
-                      '-'
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+            <td>{session.station}</td>
+
+            <td>{session.startedAt}</td>
+
+            <td>{session.energy.toFixed(1)} kWh</td>
+
+            <td>
+              <span className={`status ${session.status.toLowerCase()}`}>
+                {session.status}
+              </span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
 
       {showForm && (
         <SessionForm
