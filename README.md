@@ -8,16 +8,18 @@ The application uses fictional demonstration data for charging stations in Berli
 
 ### Dashboard
 
-![ChargeFlow Dashboard] <img width="1791" height="486" alt="Screenshot 2026-10-09 231821" src="https://github.com/user-attachments/assets/35e27ab4-3223-44a8-9358-35abfcd35e08" />
+ <img width="1791" height="486" alt="Screenshot 2026-10-09 231821" src="https://github.com/user-attachments/assets/35e27ab4-3223-44a8-9358-35abfcd35e08" />
 
 
 ### Charging Stations
 
-![Charging Stations](screenshots/stations.png)
+<img width="1778" height="912" alt="Screenshot 2026-10-09 231836" src="https://github.com/user-attachments/assets/378d3f80-b260-4612-be9e-9003560e5219" />
+
 
 ### Charging Sessions
 
-![Charging Sessions](screenshots/sessions.png)
+<img width="1771" height="913" alt="Screenshot 2026-10-09 231849" src="https://github.com/user-attachments/assets/073292fa-8c56-478f-85f5-d107a005bf06" />
+
 
 ## Features
 
@@ -27,7 +29,6 @@ The application uses fictional demonstration data for charging stations in Berli
 * Start a charging session for a selected vehicle.
 * Store demonstration data in a local JSON file.
 
-*Only list additional features, such as ending sessions, once you've confirmed they work in the application.*
 
 ## Technology Stack
 
