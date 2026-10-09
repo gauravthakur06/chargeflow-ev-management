@@ -1,45 +1,93 @@
-# ChargeFlow
+# ChargeFlow — EV Charging Operations Dashboard
 
-ChargeFlow is a small web application for an EV charging company. It lets an operator view charging stations, see which ports are free, and start a charging session for a vehicle.
+ChargeFlow is a student portfolio project that demonstrates how an operator can monitor electric vehicle charging stations and manage charging sessions through a web dashboard.
 
-## What it uses
+The application uses fictional demonstration data for charging stations in Berlin.
 
-- React (frontend user interface)
-- JavaScript and CSS
-- Node.js (backend server)
-- JSON file storage for the current demo
+## Application Preview
 
-## Run the project
+<!-- Add screenshots of your actual application in the screenshots folder. -->
 
-Open two terminals in the project folder.
+### Dashboard
 
-**Terminal 1 — backend**
+![ChargeFlow Dashboard](screenshots/dashboard.png)
+
+### Charging Stations
+
+![Charging Stations](screenshots/stations.png)
+
+### Charging Sessions
+
+![Charging Sessions](screenshots/sessions.png)
+
+## Features
+
+* View three demo charging stations in Berlin.
+* Monitor available, charging, and offline ports.
+* View recorded charging sessions.
+* Start a charging session for a selected vehicle.
+* Store demonstration data in a local JSON file.
+
+*Only list additional features, such as ending sessions, once you've confirmed they work in the application.*
+
+## Technology Stack
+
+* **Frontend:** React, JavaScript, CSS
+* **Build tool:** Vite
+* **Backend:** Node.js
+* **Data storage:** JSON file
+
+## Run Locally
+
+### Prerequisites
+
+* Node.js and npm installed.
+* Git installed if cloning the repository.
+
+### Installation
+
+Clone the repository and enter the project directory:
+
+```bash
+git clone https://github.com/gauravthakur06/chargeflow-ev-management.git
+cd chargeflow-ev-management
+```
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+### Start the application
+
+Open two terminals in the project directory.
+
+**Terminal 1 — Backend**
 
 ```bash
 npm run server
 ```
 
-**Terminal 2 — frontend**
+**Terminal 2 — Frontend**
 
 ```bash
 npm run dev
 ```
 
-Open the frontend link shown in the second terminal, usually `http://localhost:5173`.
+Open the local URL printed by Vite, usually `http://localhost:5173`.
 
-## Current features
+## Data Storage
 
-- View three demo charging stations in Berlin
-- See free, charging, and offline ports
-- View recorded charging sessions
-- Start a session using the form
-- Save new sessions in `server/data.json`
+The current demonstration version stores station and session data in `server/data.json`. Changes are stored locally in that file.
 
-## Next features to build
+## Planned Improvements
 
-1. End a charging session and release the port.
-2. Add and edit vehicles.
-3. Replace `data.json` with SQLite database storage.
-4. Add a station details page and fault report feature.
+* Add and edit vehicles.
+* Replace JSON file storage with SQLite.
+* Add a station details page.
+* Add a fault reporting feature.
 
-This is a student portfolio project using fictional data.
+## Project Scope
+
+ChargeFlow is a student portfolio project using fictional data. It is intended for demonstration and learning purposes, not for managing real charging infrastructure.
